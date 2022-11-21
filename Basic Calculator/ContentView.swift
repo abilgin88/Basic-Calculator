@@ -9,39 +9,52 @@ import SwiftUI
 
 struct ContentView: View {
     
+    // Set variables
+    
     @State  var number1 = 0.0
     @State  var number2 = 0.0
     @State  var result = 0.0
+        
+    // Adding Constants
+    let mainColor = Color(red: 52/255, green: 78/255, blue: 65/255)
+    let accentColor = Color(red: 218/255, green: 215/255, blue: 205/255)
+//    let accentColor1 = Color(red: 163/255, green: 177/255, blue: 138/255)
+//    let accentColor2 = Color(red: 88/255, green: 129/255, blue: 87/255)
+//    let accentColor3 = Color(red: 58/255, green: 90/255, blue: 64/255)
     
     var body: some View {
 
+        // 1: Adding the outer ZStack
         ZStack {
-            //Color.cyan.ignoresSafeArea()
+            //Adding the mainColor to ZStack
+            mainColor.ignoresSafeArea()
+            
+            
+            // 1.1: Adding a VStack
             VStack {
                 Spacer()
+                
+                // 1.1.1: Adding a VStack for title Section
                 VStack{
+                    //Adding Text Views
                     Text("Basic Calculator")
                 }
                 .padding()
-                .font(.title)
-                .foregroundColor(.cyan)
+                .font(.largeTitle)
+                .foregroundColor(accentColor)
                 Spacer()
                 
+                // 1.1.2: Adding a VStack for text Field Section
                 VStack {
                     HStack{
                         VStack(alignment: .center) {
-                            Text("Number-1")
-                                .font(.callout)
-                                .bold()
                             TextField("Enter Number", value: $number1, format: .number)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .multilineTextAlignment(TextAlignment.center)
                                 .keyboardType(.numberPad)
                         }.padding()
                         VStack(alignment: .center) {
-                            Text("Number-2")
-                                .font(.callout)
-                                .bold()
+
                             TextField("Enter Number", value: $number2, format: .number)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .multilineTextAlignment(TextAlignment.center)
@@ -51,35 +64,47 @@ struct ContentView: View {
                 }
                 .padding()
                 Spacer()
+                
+                // 1.1.3: Adding a VStack for Result Section
+                VStack {
+                    Text("Result: \(result)")
+                }
+                .font(.title)
+                .padding()
+                .foregroundColor(accentColor)
+                Spacer()
+                
+                // 1.1.4: Adding a VStack for Buttons Section
                 VStack {
                     HStack{
+                        // 1.1.4.1: Adding the Buttons
                         VStack{
-                            Button {
-                                result = number1 + number2
-                            } label: {
-                                Image(systemName: "plus.circle.fill")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.cyan)
+                                Button {
+                                    result = number1 + number2
+                                } label: {
+                                    Image(systemName: "plus.circle.fill")
+                                        .font(.system(size: 75))
+                                        .foregroundColor(accentColor)
+                                }
+                                .padding()
+                                
+                                Button {
+                                    result = number1 * number2
+                                } label: {
+                                    Image(systemName: "multiply.circle")
+                                        .font(.system(size: 75))
+                                        .foregroundColor(accentColor)
+                                }.padding()
+                                
                             }
-                            .padding()
-                            
-                            Button {
-                                result = number1 * number2
-                            } label: {
-                                Image(systemName: "multiply.circle")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.cyan)
-                            }.padding()
-                            
-                        }
-                        
+                        // 1.1.4.2: Adding the Buttons
                         VStack{
                             Button {
                                 result = number1 - number2
                             } label: {
                                 Image(systemName: "minus.circle")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.cyan)
+                                    .font(.system(size: 75))
+                                    .foregroundColor(accentColor)
                             }
                             .padding()
                             
@@ -87,8 +112,8 @@ struct ContentView: View {
                                 result = number1 / number2
                             } label: {
                                 Image(systemName: "divide.circle.fill")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.cyan)
+                                    .font(.system(size: 75))
+                                    .foregroundColor(accentColor)
                             }.padding()
                         }
                         
@@ -97,16 +122,17 @@ struct ContentView: View {
                 }
                 .padding()
                 Spacer()
-                VStack {
-                    Text("Result: \(result)")
-                }
-                .padding()
-                Spacer()
+                
+               
+                
+                // 1.1.5: Adding a VStack for Clear Button Section
                 VStack {
                     Button {
                         print("clear tapped!")
                     } label: {
                         Image(systemName: "clear")
+                            .foregroundColor(accentColor)
+                            .font(.system(size: 50))
                     }
                     .padding()
                     .font(.largeTitle)
