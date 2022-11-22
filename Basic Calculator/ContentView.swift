@@ -14,6 +14,9 @@ struct ContentView: View {
     @State  var number1 = 0.0
     @State  var number2 = 0.0
     @State  var result = 0.0
+    
+    // Hide keyboard variable
+    @FocusState private var textFieldIsFocused: Bool
         
     // Adding Constants
     let mainColor = Color(red: 52/255, green: 78/255, blue: 65/255)
@@ -52,6 +55,7 @@ struct ContentView: View {
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .multilineTextAlignment(TextAlignment.center)
                                 .keyboardType(.numberPad)
+                                .focused($textFieldIsFocused) // check textfield is focused
                         }.padding()
                         VStack(alignment: .center) {
 
@@ -59,6 +63,7 @@ struct ContentView: View {
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .multilineTextAlignment(TextAlignment.center)
                                 .keyboardType(.numberPad)
+                                .focused($textFieldIsFocused) // check textfield is focused
                         }.padding()
                     }
                 }
@@ -81,6 +86,7 @@ struct ContentView: View {
                         VStack{
                                 Button {
                                     result = number1 + number2
+                                    textFieldIsFocused = false // when click the button set "textFieldIsFocused" to false for Dismissing keyboard.
                                 } label: {
                                     Image(systemName: "plus.circle.fill")
                                         .font(.system(size: 75))
@@ -90,6 +96,7 @@ struct ContentView: View {
                                 
                                 Button {
                                     result = number1 * number2
+                                    textFieldIsFocused = false // when click the button set "textFieldIsFocused" to false for Dismissing keyboard.
                                 } label: {
                                     Image(systemName: "multiply.circle")
                                         .font(.system(size: 75))
@@ -101,6 +108,7 @@ struct ContentView: View {
                         VStack{
                             Button {
                                 result = number1 - number2
+                                textFieldIsFocused = false //
                             } label: {
                                 Image(systemName: "minus.circle")
                                     .font(.system(size: 75))
@@ -110,6 +118,7 @@ struct ContentView: View {
                             
                             Button {
                                 result = number1 / number2
+                                textFieldIsFocused = false // 
                             } label: {
                                 Image(systemName: "divide.circle.fill")
                                     .font(.system(size: 75))
