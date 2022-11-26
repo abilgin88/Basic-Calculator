@@ -7,7 +7,36 @@
 
 import SwiftUI
 
+
+// Building View Model
+
+struct numbers {
+
+    // defining values
+    var number1: Double = 0.0
+    var number2: Double = 0.0
+    var result: Double = 0.0
+    
+    // Addition function
+    mutating func Add() {
+        result = number1 + number2
+    }
+    // Subtraction function
+    mutating func Sub() {
+        result = number1 - number2
+    }
+    // Multiplication function
+    mutating func Mul() {
+        result = number1 * number2
+    }
+    // Division function
+    mutating func Div() {
+        result = number1 / number2
+    }
+}
+
 struct ContentView: View {
+    
     
     // Set variables
     
