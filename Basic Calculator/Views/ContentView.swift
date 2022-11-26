@@ -18,20 +18,14 @@ struct ContentView: View {
     // Hide keyboard variable
     @FocusState private var textFieldIsFocused: Bool
         
-    // Adding Constants
-    let mainColor = Color(red: 52/255, green: 78/255, blue: 65/255)
-    let accentColor = Color(red: 218/255, green: 215/255, blue: 205/255)
-//    let accentColor1 = Color(red: 163/255, green: 177/255, blue: 138/255)
-//    let accentColor2 = Color(red: 88/255, green: 129/255, blue: 87/255)
-//    let accentColor3 = Color(red: 58/255, green: 90/255, blue: 64/255)
+   
     
     var body: some View {
 
         // 1: Adding the outer ZStack
         ZStack {
             //Adding the mainColor to ZStack
-            mainColor.ignoresSafeArea()
-            
+            AppColor.mainColor.ignoresSafeArea()
             
             // 1.1: Adding a VStack
             VStack {
@@ -44,7 +38,7 @@ struct ContentView: View {
                 }
                 .padding()
                 .font(.largeTitle)
-                .foregroundColor(accentColor)
+                .foregroundColor(AppColor.accentColor)
                 Spacer()
                 
                 // 1.1.2: Adding a VStack for text Field Section
@@ -76,7 +70,7 @@ struct ContentView: View {
                 }
                 .font(.title)
                 .padding()
-                .foregroundColor(accentColor)
+                .foregroundColor(AppColor.accentColor)
                 Spacer()
                 
                 // 1.1.4: Adding a VStack for Buttons Section
@@ -90,7 +84,7 @@ struct ContentView: View {
                                 } label: {
                                     Image(systemName: "plus.circle.fill")
                                         .font(.system(size: 75))
-                                        .foregroundColor(accentColor)
+                                        .foregroundColor(AppColor.accentColor)
                                 }
                                 .padding()
                                 
@@ -100,7 +94,7 @@ struct ContentView: View {
                                 } label: {
                                     Image(systemName: "multiply.circle")
                                         .font(.system(size: 75))
-                                        .foregroundColor(accentColor)
+                                        .foregroundColor(AppColor.accentColor)
                                 }.padding()
                                 
                             }
@@ -112,7 +106,7 @@ struct ContentView: View {
                             } label: {
                                 Image(systemName: "minus.circle")
                                     .font(.system(size: 75))
-                                    .foregroundColor(accentColor)
+                                    .foregroundColor(AppColor.accentColor)
                             }
                             .padding()
                             
@@ -122,7 +116,7 @@ struct ContentView: View {
                             } label: {
                                 Image(systemName: "divide.circle.fill")
                                     .font(.system(size: 75))
-                                    .foregroundColor(accentColor)
+                                    .foregroundColor(AppColor.accentColor)
                             }.padding()
                         }
                         
@@ -140,7 +134,7 @@ struct ContentView: View {
                         print("clear tapped!")
                     } label: {
                         Image(systemName: "clear")
-                            .foregroundColor(accentColor)
+                            .foregroundColor(AppColor.accentColor)
                             .font(.system(size: 50))
                     }
                     .padding()
